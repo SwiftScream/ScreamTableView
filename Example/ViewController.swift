@@ -31,9 +31,46 @@ class ViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        self.tableViewAdapter = Adapter(dataSource: ViewControllerDataSource())
+        self.tableViewAdapter = Adapter([PrimaryColorSwatchSectionDataSource(), SecondaryColorSwatchSectionDataSource()])
+
         tableView?.dataSource = self.tableViewAdapter
         tableView?.delegate = self.tableViewAdapter
+    }
+}
+
+class PrimaryColorSwatchSectionDataSource : SimpleSectionDataSource {
+    init() {
+        super.init(cellControllers: [ColorSwatchTableViewCellController(name:"Black", color:.black),
+                                     ColorSwatchTableViewCellController(name:"Dark Gray", color:.darkGray),
+                                     ColorSwatchTableViewCellController(name:"Light Gray", color:.lightGray),
+                                     ColorSwatchTableViewCellController(name:"Gray", color:.gray),
+                                     ColorSwatchTableViewCellController(name:"Red", color:.red),
+                                     ColorSwatchTableViewCellController(name:"Green", color:.green),
+                                     ColorSwatchTableViewCellController(name:"Blue", color:.blue),
+                                     ColorSwatchTableViewCellController(name:"Cyan", color:.cyan),
+                                     ColorSwatchTableViewCellController(name:"Yellow", color:.yellow),
+                                     ColorSwatchTableViewCellController(name:"Magenta", color:.magenta),
+                                     ColorSwatchTableViewCellController(name:"Orange", color:.orange),
+                                     ColorSwatchTableViewCellController(name:"Purple", color:.purple),
+                                     ColorSwatchTableViewCellController(name:"Brown", color:.brown),])
+    }
+}
+
+class SecondaryColorSwatchSectionDataSource : SimpleSectionDataSource {
+    init() {
+        super.init(cellControllers: [ColorSwatchTableViewCellController(name:"Black 50%", color:UIColor.black.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Dark Gray 50%", color:UIColor.darkGray.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Light Gray 50%", color:UIColor.lightGray.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Gray 50%", color:UIColor.gray.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Red 50%", color:UIColor.red.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Green 50%", color:UIColor.green.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Blue 50%", color:UIColor.blue.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Cyan 50%", color:UIColor.cyan.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Yellow 50%", color:UIColor.yellow.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Magenta 50%", color:UIColor.magenta.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Orange 50%", color:UIColor.orange.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Purple 50%", color:UIColor.purple.withAlphaComponent(0.5)),
+                                     ColorSwatchTableViewCellController(name:"Brown 50%", color:UIColor.brown.withAlphaComponent(0.5)),])
     }
 }
 
@@ -73,42 +110,5 @@ class ColorSwatchTableViewCellController : CellController<ColorSwatchTableViewCe
     override func cellDidLoad() {
         cell?.textLabel?.text = name
         cell?.swatchView.backgroundColor = color
-    }
-}
-
-class ViewControllerDataSource : DataSource {
-    let cellControllers = [ColorSwatchTableViewCellController(name:"Black", color:.black),
-                           ColorSwatchTableViewCellController(name:"Dark Gray", color:.darkGray),
-                           ColorSwatchTableViewCellController(name:"Light Gray", color:.lightGray),
-                           ColorSwatchTableViewCellController(name:"Gray", color:.gray),
-                           ColorSwatchTableViewCellController(name:"Red", color:.red),
-                           ColorSwatchTableViewCellController(name:"Green", color:.green),
-                           ColorSwatchTableViewCellController(name:"Blue", color:.blue),
-                           ColorSwatchTableViewCellController(name:"Cyan", color:.cyan),
-                           ColorSwatchTableViewCellController(name:"Yellow", color:.yellow),
-                           ColorSwatchTableViewCellController(name:"Magenta", color:.magenta),
-                           ColorSwatchTableViewCellController(name:"Orange", color:.orange),
-                           ColorSwatchTableViewCellController(name:"Purple", color:.purple),
-                           ColorSwatchTableViewCellController(name:"Brown", color:.brown),
-                           ColorSwatchTableViewCellController(name:"Black 50%", color:UIColor.black.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Dark Gray 50%", color:UIColor.darkGray.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Light Gray 50%", color:UIColor.lightGray.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Gray 50%", color:UIColor.gray.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Red 50%", color:UIColor.red.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Green 50%", color:UIColor.green.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Blue 50%", color:UIColor.blue.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Cyan 50%", color:UIColor.cyan.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Yellow 50%", color:UIColor.yellow.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Magenta 50%", color:UIColor.magenta.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Orange 50%", color:UIColor.orange.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Purple 50%", color:UIColor.purple.withAlphaComponent(0.5)),
-                           ColorSwatchTableViewCellController(name:"Brown 50%", color:UIColor.brown.withAlphaComponent(0.5)),]
-
-    func numberOfRowsInSection(_ section: Int) -> Int {
-        return cellControllers.count
-    }
-
-    func cellControllerForRowAtIndexPath(_ indexPath: IndexPath) -> CellControllerBase {
-        return cellControllers[indexPath.row]
     }
 }

@@ -17,9 +17,21 @@ import UIKit
 public class Adapter: NSObject {
     private let dataSource: DataSource
 
-    public init(dataSource: DataSource) {
+    public init(_ dataSource: DataSource) {
         self.dataSource = dataSource
         super.init()
+    }
+
+    public convenience init(_ sectionDataSources: [SectionDataSource]) {
+        self.init(CompositeDataSource(sectionDataSources: sectionDataSources))
+    }
+
+    public convenience init(_ sectionDataSource: SectionDataSource) {
+        self.init([sectionDataSource])
+    }
+
+    public convenience init(_ cellControllers: [CellControllerBase]) {
+        self.init([SimpleSectionDataSource(cellControllers: cellControllers)])
     }
 }
 

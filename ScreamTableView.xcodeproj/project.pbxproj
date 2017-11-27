@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		958685D21FC78C330020838A /* SectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958685D11FC78C330020838A /* SectionDataSource.swift */; };
+		958685D41FC7CB600020838A /* CompositeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958685D31FC7CB600020838A /* CompositeDataSource.swift */; };
 		95B934791FBAB6550033D20F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B934781FBAB6550033D20F /* DataSource.swift */; };
 		95B9347B1FBAB7250033D20F /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9347A1FBAB7250033D20F /* CellController.swift */; };
 		95BAAD661F720D04005F3D08 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BAAD651F720CB3005F3D08 /* Adapter.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		958685D11FC78C330020838A /* SectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDataSource.swift; sourceTree = "<group>"; };
+		958685D31FC7CB600020838A /* CompositeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeDataSource.swift; sourceTree = "<group>"; };
 		95B934781FBAB6550033D20F /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		95B9347A1FBAB7250033D20F /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		95BAAD651F720CB3005F3D08 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				95BAAD651F720CB3005F3D08 /* Adapter.swift */,
 				95B934781FBAB6550033D20F /* DataSource.swift */,
+				958685D11FC78C330020838A /* SectionDataSource.swift */,
+				958685D31FC7CB600020838A /* CompositeDataSource.swift */,
 				95B9347A1FBAB7250033D20F /* CellController.swift */,
 			);
 			path = Source;
@@ -226,7 +232,9 @@
 			files = (
 				95B934791FBAB6550033D20F /* DataSource.swift in Sources */,
 				95B9347B1FBAB7250033D20F /* CellController.swift in Sources */,
+				958685D21FC78C330020838A /* SectionDataSource.swift in Sources */,
 				95BAAD661F720D04005F3D08 /* Adapter.swift in Sources */,
+				958685D41FC7CB600020838A /* CompositeDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
