@@ -12,7 +12,16 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import UIKit
+import Foundation
 
-public class ScreamTableView {
+public protocol DataSource {
+    var numberOfSections: Int { get }
+    func numberOfRowsInSection(_ section: Int) -> Int
+    func cellControllerForRowAtIndexPath(_ indexPath: IndexPath) -> CellControllerBase
+}
+
+public extension DataSource {
+    var numberOfSections: Int {
+        get { return 1 }
+    }
 }

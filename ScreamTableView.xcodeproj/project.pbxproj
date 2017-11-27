@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95BAAD661F720D04005F3D08 /* ScreamTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BAAD651F720CB3005F3D08 /* ScreamTableView.swift */; };
+		95B934791FBAB6550033D20F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B934781FBAB6550033D20F /* DataSource.swift */; };
+		95B9347B1FBAB7250033D20F /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9347A1FBAB7250033D20F /* CellController.swift */; };
+		95BAAD661F720D04005F3D08 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BAAD651F720CB3005F3D08 /* Adapter.swift */; };
 		95C591891F6F7C1200C4405A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C591881F6F7C1200C4405A /* AppDelegate.swift */; };
 		95C5918B1F6F7C1200C4405A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5918A1F6F7C1200C4405A /* ViewController.swift */; };
 		95C591901F6F7C1200C4405A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C5918F1F6F7C1200C4405A /* Assets.xcassets */; };
@@ -37,7 +39,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		95BAAD651F720CB3005F3D08 /* ScreamTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreamTableView.swift; sourceTree = "<group>"; };
+		95B934781FBAB6550033D20F /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		95B9347A1FBAB7250033D20F /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
+		95BAAD651F720CB3005F3D08 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		95C591721F6F7A1100C4405A /* libScreamTableView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScreamTableView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C591861F6F7C1200C4405A /* ScreamTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreamTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C591881F6F7C1200C4405A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +97,9 @@
 		95C591741F6F7A1100C4405A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				95BAAD651F720CB3005F3D08 /* ScreamTableView.swift */,
+				95BAAD651F720CB3005F3D08 /* Adapter.swift */,
+				95B934781FBAB6550033D20F /* DataSource.swift */,
+				95B9347A1FBAB7250033D20F /* CellController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -218,7 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95BAAD661F720D04005F3D08 /* ScreamTableView.swift in Sources */,
+				95B934791FBAB6550033D20F /* DataSource.swift in Sources */,
+				95B9347B1FBAB7250033D20F /* CellController.swift in Sources */,
+				95BAAD661F720D04005F3D08 /* Adapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
