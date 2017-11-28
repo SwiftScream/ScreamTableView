@@ -66,6 +66,10 @@ open class CellControllerBase {
         assert(self.tableView != nil)
         assert(self._cell != nil)
     }
+
+    open func heightForCell(inTableView tableView: UITableView) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
 
 open class CellController<CellType : UITableViewCell> : CellControllerBase {

@@ -15,23 +15,44 @@
 import UIKit
 
 public class Adapter: NSObject {
-    private let dataSource: DataSource
+    public struct Options : OptionSet {
+        public let rawValue: Int
 
-    public init(_ dataSource: DataSource) {
+        public init(rawValue: Int) {
+            self.rawValue = rawValue
+        }
+
+        public static let providesCellHeight = Options(rawValue: 1)
+    }
+
+    public static let defaultOptions : Options = [.providesCellHeight]
+
+    private let dataSource: DataSource
+    private let options: Options
+
+    public init(_ dataSource: DataSource, options: Options = defaultOptions) {
         self.dataSource = dataSource
+        self.options = options
         super.init()
     }
 
-    public convenience init(_ sectionDataSources: [SectionDataSource]) {
-        self.init(CompositeDataSource(sectionDataSources: sectionDataSources))
+    public convenience init(_ sectionDataSources: [SectionDataSource], options: Options = defaultOptions) {
+        self.init(CompositeDataSource(sectionDataSources: sectionDataSources), options: options)
     }
 
-    public convenience init(_ sectionDataSource: SectionDataSource) {
-        self.init([sectionDataSource])
+    public convenience init(_ sectionDataSource: SectionDataSource, options: Options = defaultOptions) {
+        self.init([sectionDataSource], options: options)
     }
 
-    public convenience init(_ cellControllers: [CellControllerBase]) {
-        self.init([SimpleSectionDataSource(cellControllers: cellControllers)])
+    public convenience init(_ cellControllers: [CellControllerBase], options: Options = defaultOptions) {
+        self.init([SimpleSectionDataSource(cellControllers: cellControllers)], options: options)
+    }
+
+    public override func responds(to selector: Selector!) -> Bool {
+        if (selector == #selector(tableView(_:heightForRowAt:))) {
+            return options.contains(.providesCellHeight)
+        }
+        return super.responds(to: selector)
     }
 }
 
@@ -59,5 +80,10 @@ extension Adapter: UITableViewDelegate {
         let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
         assert(cellController._cell === cell)
         cellController.unloadCell()
+    }
+
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.heightForCell(inTableView:tableView)
     }
 }
