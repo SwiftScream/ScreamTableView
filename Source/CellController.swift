@@ -24,7 +24,11 @@ open class CellControllerBase {
 
     // MARK: Internal Implementation
     private static func createCell(inTableView tableView: UITableView) -> UITableViewCell {
-        let cell = self.cellClass.init(style: self.cellStyle, reuseIdentifier: self.reuseIdentifier)
+        var nibCell : UITableViewCell? = nil
+        if let nibName = self.nibName {
+            nibCell = self.nibBundle.loadNibNamed(nibName, owner: nil, options: nil)?.first as? UITableViewCell
+        }
+        let cell = nibCell ?? self.cellClass.init(style: self.cellStyle, reuseIdentifier: self.reuseIdentifier)
         self.configureCell(cell, inTableView: tableView)
         return cell
     }
@@ -49,6 +53,8 @@ open class CellControllerBase {
     }
 
     // MARK: Overrides
+    open class var nibName : String? { get { return nil } }
+    open class var nibBundle: Bundle { get { return Bundle.main } }
     open class var cellStyle : UITableViewCellStyle { get { return .default } }
 
     open func cellDidLoad() {
