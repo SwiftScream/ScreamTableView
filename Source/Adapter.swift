@@ -23,6 +23,7 @@ public class Adapter: NSObject {
         }
 
         public static let providesCellHeight = Options(rawValue: 1)
+        public static let providesEstimatedCellHeight = Options(rawValue: 2)
     }
 
     public static let defaultOptions : Options = [.providesCellHeight]
@@ -51,6 +52,9 @@ public class Adapter: NSObject {
     public override func responds(to selector: Selector!) -> Bool {
         if (selector == #selector(tableView(_:heightForRowAt:))) {
             return options.contains(.providesCellHeight)
+        }
+        if (selector == #selector(tableView(_:estimatedHeightForRowAt:))) {
+            return options.contains(.providesEstimatedCellHeight)
         }
         return super.responds(to: selector)
     }
@@ -85,5 +89,10 @@ extension Adapter: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
         return cellController.heightForCell(inTableView:tableView)
+    }
+
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.estimatedHeightForCell(inTableView:tableView)
     }
 }

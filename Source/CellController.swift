@@ -70,6 +70,10 @@ open class CellControllerBase {
     open func heightForCell(inTableView tableView: UITableView) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+
+    open func estimatedHeightForCell(inTableView tableView: UITableView) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
 
 open class CellController<CellType : UITableViewCell> : CellControllerBase {
