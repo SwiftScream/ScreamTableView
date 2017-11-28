@@ -75,27 +75,14 @@ class SecondaryColorSwatchSectionDataSource : SimpleSectionDataSource {
 }
 
 class ColorSwatchTableViewCell : UITableViewCell {
-    let swatchView = UIView()
-
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(swatchView)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        swatchView.frame = CGRect(x: self.contentView.bounds.width - 32 - self.layoutMargins.right, y: 6, width: 32, height: 32)
-    }
+    @IBOutlet var swatchView: UIView!
 }
 
 class ColorSwatchTableViewCellController : CellController<ColorSwatchTableViewCell> {
     let name: String
     let color: UIColor
+
+    override class var nibName : String? { get { return String(describing: ColorSwatchTableViewCell.self) } }
 
     init(name: String, color: UIColor) {
         self.name = name
