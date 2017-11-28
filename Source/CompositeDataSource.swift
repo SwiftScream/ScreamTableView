@@ -17,6 +17,10 @@ import Foundation
 open class CompositeDataSource : DataSource {
     let sectionDataSources : AnyRandomAccessCollection<SectionDataSource>
 
+    public init(sectionDataSources: AnySequence<SectionDataSource>) {
+        self.sectionDataSources = AnyRandomAccessCollection(Array(sectionDataSources))
+    }
+
     public init(sectionDataSources: AnyRandomAccessCollection<SectionDataSource>) {
         self.sectionDataSources = sectionDataSources
     }
