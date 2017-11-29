@@ -93,6 +93,9 @@ open class CellControllerBase {
 
     open func didDeselectCell() {
     }
+
+    open func cellAccessoryButtonTapped() {
+    }
 }
 
 open class CellController<CellType : UITableViewCell> : CellControllerBase {

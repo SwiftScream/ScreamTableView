@@ -122,4 +122,8 @@ extension Adapter: UITableViewDelegate {
         cellController.didDeselectCell()
     }
 
+    public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        cellController.cellAccessoryButtonTapped()
+    }
 }
