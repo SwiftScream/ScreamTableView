@@ -101,4 +101,25 @@ extension Adapter: UITableViewDelegate {
         let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
         return cellController.estimatedHeightForCell(inTableView:tableView)
     }
+
+    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.willSelectCell() ? indexPath : nil
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        cellController.didSelectCell()
+    }
+
+    public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.willDeselectCell() ? indexPath : nil
+    }
+
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        cellController.didDeselectCell()
+    }
+
 }

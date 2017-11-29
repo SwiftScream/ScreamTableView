@@ -79,6 +79,20 @@ open class CellControllerBase {
     open func estimatedHeightForCell(inTableView tableView: UITableView) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+
+    open func willSelectCell() -> Bool {
+        return true
+    }
+
+    open func didSelectCell() {
+    }
+
+    open func willDeselectCell() -> Bool {
+        return true
+    }
+
+    open func didDeselectCell() {
+    }
 }
 
 open class CellController<CellType : UITableViewCell> : CellControllerBase {
