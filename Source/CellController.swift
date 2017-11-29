@@ -62,6 +62,11 @@ open class CellControllerBase {
         assert(self._cell != nil)
     }
 
+    open func cellWillAppear() {
+        assert(self.tableView != nil)
+        assert(self._cell != nil)
+    }
+
     open func cellWillUnload() {
         assert(self.tableView != nil)
         assert(self._cell != nil)

@@ -80,6 +80,12 @@ extension Adapter: UITableViewDataSource {
 }
 
 extension Adapter: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        assert(cellController._cell === cell)
+        cellController.cellWillAppear()
+    }
+
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
         assert(cellController._cell === cell)
