@@ -96,6 +96,13 @@ open class CellControllerBase {
 
     open func cellAccessoryButtonTapped() {
     }
+
+    open func canEdit() -> Bool {
+        return false
+    }
+
+    open func commit(_ editingStyle: UITableViewCellEditingStyle) {
+    }
 }
 
 open class CellController<CellType : UITableViewCell> : CellControllerBase {

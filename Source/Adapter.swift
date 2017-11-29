@@ -77,6 +77,16 @@ extension Adapter: UITableViewDataSource {
         }
         return cell
     }
+
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.canEdit()
+    }
+
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        cellController.commit(editingStyle)
+    }
 }
 
 extension Adapter: UITableViewDelegate {
