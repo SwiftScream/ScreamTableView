@@ -24,6 +24,7 @@ public class Adapter: NSObject {
 
         public static let providesCellHeight = Options(rawValue: 1)
         public static let providesEstimatedCellHeight = Options(rawValue: 2)
+        public static let providesTitleForDeleteConfirmationButton = Options(rawValue: 4)
     }
 
     public static let defaultOptions : Options = [.providesCellHeight]
@@ -55,6 +56,9 @@ public class Adapter: NSObject {
         }
         if (selector == #selector(tableView(_:estimatedHeightForRowAt:))) {
             return options.contains(.providesEstimatedCellHeight)
+        }
+        if (selector == #selector(tableView(_:titleForDeleteConfirmationButtonForRowAt:))) {
+            return options.contains(.providesTitleForDeleteConfirmationButton)
         }
         return super.responds(to: selector)
     }
@@ -135,5 +139,33 @@ extension Adapter: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
         cellController.cellAccessoryButtonTapped()
+    }
+
+    public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        cellController.willBeginEditing()
+    }
+
+    public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        guard let indexPath = indexPath else {
+            return
+        }
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        cellController.didEndEditing()
+    }
+
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.editingStyle
+    }
+
+    public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.titleForDeleteConfirmationButton
+    }
+
+    public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        let cellController = dataSource.cellControllerForRowAtIndexPath(indexPath)
+        return cellController.shouldIndentWhileEditing
     }
 }

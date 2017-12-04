@@ -103,6 +103,16 @@ open class CellControllerBase {
 
     open func commit(_ editingStyle: UITableViewCellEditingStyle) {
     }
+
+    open func willBeginEditing() {
+    }
+
+    open func didEndEditing() {
+    }
+
+    open var editingStyle: UITableViewCellEditingStyle { get { return .delete } }
+    open var titleForDeleteConfirmationButton: String? { get { return nil } }
+    open var shouldIndentWhileEditing : Bool { get { return true } }
 }
 
 open class CellController<CellType : UITableViewCell> : CellControllerBase {
